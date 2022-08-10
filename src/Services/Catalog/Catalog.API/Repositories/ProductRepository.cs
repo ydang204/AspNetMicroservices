@@ -1,5 +1,6 @@
-﻿using Catalog.API.Data;
+﻿using Catalog.API.Data.Interfaces;
 using Catalog.API.Entities;
+using Catalog.API.Repositories.Interfaces;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -52,8 +53,8 @@ namespace Catalog.API.Repositories
 
         public async Task<bool> UpdateProduct(Product product)
         {
-            var updateReulst = await _context.Products.ReplaceOneAsync(filter: g => g.Id == product.Id, replacement: product);
-            return updateReulst.IsAcknowledged && updateReulst.ModifiedCount > 0;
+            var updateResults = await _context.Products.ReplaceOneAsync(filter: g => g.Id == product.Id, replacement: product);
+            return updateResults.IsAcknowledged && updateResults.ModifiedCount > 0;
         }
     }
 }
