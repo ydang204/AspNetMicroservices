@@ -16,6 +16,16 @@ services:
       - "6379:6379"
     volumes:
       - mongo_data:/data/db
+
+  portainer: 
+    container_name: portainer
+    restart: always
+    ports:
+      - "8080:8000"
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.soc
+      - portainer_data:/data
   
 
   mongoclient: 
