@@ -19,4 +19,7 @@ mongo-db:
 mongo-client:
 	docker run -d -p 3000:3000 mongoclient/mongoclient
 
-.PHONY: run-dev, mongo-db, remove-containers, remove-images, stop-containers
+redis:
+	docker run -d -p 6739:6739 --name redis redis
+
+.PHONY: run-dev, mongo-db, remove-containers, remove-images, stop-containers, redis
