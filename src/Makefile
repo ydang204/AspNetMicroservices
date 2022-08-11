@@ -1,16 +1,7 @@
-remove-images:
-	docker rmi $(docker images -q)
-
-stop-containers:
-	docker stop $(docker ps -aq)
-
-remove-containers:
-	docker rm $(docker ps -aq)
-
-compose-override-up:
+override-up:
 	docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
 
-compose-override-down:
+override-down:
 	docker-compose -f docker-compose.yml -f docker-compose.override.yml down
 
 mongo-db:
