@@ -1,10 +1,13 @@
-override-up:
-	docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
+compose-up:
+	docker-compose -f docker-compose.yml -f docker-compose.$(env).yml up -d 
+
+compose-build-up:
+	docker-compose -f docker-compose.yml -f docker-compose.$(env).yml up -d --no-deps --build $(service)
 
 override-down:
-	docker-compose -f docker-compose.yml -f docker-compose.override.yml down
+	docker-compose -f docker-compose.yml -f docker-compose.$(env).yml down
 
-mongo-db:
+mongo:
 	docker run -d -p 27017:27017 --name shopping-mongo mongo
 
 mongo-client:
@@ -13,4 +16,7 @@ mongo-client:
 redis:
 	docker run -d -p 6739:6739 --name redis redis
 
-.PHONY: run-dev, mongo-db, remove-containers, remove-images, stop-containers, redis
+postgres:
+	docker run -d -p 5432:5432 --name postgres -e POSTGRES_PASSWORD=admin1234 postgres
+
+.PHONY: compose-up, compose-build-up, override-down, mongo-db, redis, mongo, mongo-client, postgres
