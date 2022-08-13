@@ -1,6 +1,6 @@
 ﻿using Dapper;
-using Discount.API.Entities;
-using Discount.API.Repositories.Interfaces;
+using Discount.Grpc.Entities;
+using Discount.Grpc.Repositories.Interface;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 using System.Threading.Tasks;
