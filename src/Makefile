@@ -4,7 +4,7 @@ compose-up:
 compose-build-up:
 	docker-compose -f docker-compose.yml -f docker-compose.$(env).yml up -d --no-deps --build $(service)
 
-override-down:
+compose-down:
 	docker-compose -f docker-compose.yml -f docker-compose.$(env).yml down
 
 mongo:
@@ -19,4 +19,4 @@ redis:
 postgres:
 	docker run -d -p 5432:5432 --name postgres -e POSTGRES_PASSWORD=admin1234 postgres
 
-.PHONY: compose-up, compose-build-up, override-down, mongo-db, redis, mongo, mongo-client, postgres
+.PHONY: compose-up, compose-build-up, compose-down, mongo-db, redis, mongo, mongo-client, postgres
