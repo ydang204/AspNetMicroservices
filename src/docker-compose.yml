@@ -11,14 +11,19 @@ services:
 
   discountdb:
     image: postgres 
-    
 
+  orderdb:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+ 
   pgadmin:
     image: dpage/pgadmin4
 
 
   portainer:
     image: portainer/portainer-ce
+
+  portaineragent:
+    image: portainer/agent
 
 
   mongoclient:
@@ -45,12 +50,17 @@ services:
       context: .
       dockerfile: Services/Discount/Discount.API/Dockerfile
 
-
   discount.grpc:
     image: ${DOCKER_REGISTRY-}discountgrpc
     build:
       context: .
       dockerfile: Services/Discount/Discount.Grpc/Dockerfile
+
+  ordering.api:
+    image: ${DOCKER_REGISTRY-}orderingapi
+    build:
+      context: .
+      dockerfile: Services/Ordering/Ordering.API/Dockerfile
 
 volumes:
   mongo_data:
