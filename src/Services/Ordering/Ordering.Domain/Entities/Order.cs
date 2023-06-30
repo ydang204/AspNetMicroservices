@@ -26,3 +26,4 @@ namespace Ordering.Domain.Entities
         public int PaymentMethod { get; set; }
     }
 }
+
