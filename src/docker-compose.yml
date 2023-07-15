@@ -25,6 +25,8 @@ services:
   portaineragent:
     image: portainer/agent
 
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
 
   mongoclient:
     image: mongoclient/mongoclient

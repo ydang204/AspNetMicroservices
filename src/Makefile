@@ -1,5 +1,5 @@
 compose-up:
-	docker-compose -f docker-compose.yml -f docker-compose.$(env).yml up -d 
+	docker-compose -f docker-compose.yml -f docker-compose.$(env).yml up -d
 
 compose-build-up:
 	docker-compose -f docker-compose.yml -f docker-compose.$(env).yml up -d --no-deps --build $(service)
